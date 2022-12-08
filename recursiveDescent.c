@@ -1,5 +1,11 @@
 #include<stdio.h>
 #include<string.h>
+int E();
+int EP();
+int TP();
+int T();
+int F();
+
 char input[100];
 int i,l;
 void main()
@@ -7,7 +13,7 @@ void main()
 printf("\nRecursive descent parsing for the following grammar\n");
 printf("\nE->TE'\nE'->+TE'/@\nT->FT'\nT'->*FT'/@\nF->(E)/ID\n");
 printf("\nEnter the string to be checked:");
-gets(input);
+fgets(input,sizeof(input),stdin);
 if(E())
 {
 	if(input[i+1]=='\0')
@@ -20,7 +26,7 @@ else{
 	printf("\nString not accepted");
 }
 }
-E()
+int E()
 {
 	if(T())
 	{
@@ -32,7 +38,7 @@ E()
 	else
 	return(0);
 }
-EP()
+int EP()
 {
 	if(input[i]=='+')
 	{
@@ -50,7 +56,7 @@ EP()
 	else
 	return(1);
 }
-T()
+int T()
 {
 	if(F())
 	{
@@ -62,7 +68,7 @@ T()
 	else
 	return(0);
 }
-TP()
+int TP()
 {
 	if(input[i]=='*')
 	{
@@ -80,7 +86,7 @@ TP()
 	else
 	return(1);
 }
-F()
+int F()
 {
 	if(input[i]=='(')
 	{
